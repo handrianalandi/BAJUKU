@@ -88,22 +88,24 @@ if (isset($_GET['status'])) {
 		<div class="modal fade" id="select-item-modal" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
 				<form action="services/buyitem.php" method="POST" id="formbuyitem">
-
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title text-center" id="nama"></h5>
+							<div class="form-group">
+								<h5 class="form-control modal-title text-center" id="nama"></h5>
+							</div>
 						</div>
 						<div class="modal-body">
 							<img src="" alt="">
 							<h5></h5>
-							<p></p>
+							<div>
+								<p class="form-group"></p>
+							</div>
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 							<button type="button" id="submit-buy-button" type="submit" class="btn btn-success"><span class="lnr lnr-cart"></span> Buy</button>
 						</div>
 					</div>
-
 				</form>
 			</div>
 		</div>
