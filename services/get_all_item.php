@@ -1,6 +1,6 @@
-<?php 
+<?php
 
-include $_SERVER['DOCUMENT_ROOT']."/ProyekTekweb/database.php";
+include "database.php";
 
 header("Content-Type: application/json");
 

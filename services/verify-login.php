@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/ProyekTekweb/database.php";
+include "database.php";
 header("Content-Type: application/json");
 if(isset($_POST['email'])){
     $email = $_POST['email'];
@@ -11,11 +11,7 @@ if(isset($_POST['email'])){
 
 	if($stmt->rowCount()==1){
 		$rowUser = $stmt->fetch();
-		$_SESSION['nama']=$rowUser['nama'];
-		$_SESSION['email']=$rowUser['email'];
-		$_SESSION['alamat']=$rowUser['alamat'];
-		$_SESSION['password']=$rowUser['password'];
-		$_SESSION['id_user']=$rowUser['id_user'];
+		$_SESSION['email'] = $rowUser['email'];
 		header("Location: ../home.php");
 	}
 	else{

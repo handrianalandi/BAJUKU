@@ -1,5 +1,5 @@
-<?php 
-include $_SERVER['DOCUMENT_ROOT']."/ProyekTekweb/database.php";
+<?php
+include "database.php";
 header("Content-Type: application/json");
 if(isset($_POST['email'])){
     $email = $_POST['email'];
@@ -19,7 +19,8 @@ if(isset($_POST['email'])){
 	    $stmt = $pdo->prepare($sql);
     
 	    if($stmt->execute()){
-            header("Location: ../login.php?status=10");
+			$_SESSION['email'] = $rowUser['email'];
+            header("Location: ../home.php?status=10");
             exit();
 	    }
 	    else{

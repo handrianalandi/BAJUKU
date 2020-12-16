@@ -1,5 +1,5 @@
 <?php
-include $_SERVER['DOCUMENT_ROOT']."/ProyekTekweb/database.php";
+include "services/database.php";
 if(isset($_SESSION['nama'])){
     header('location: home.php');
 }
@@ -54,115 +54,15 @@ if(isset($_GET['status'])){
             </div>
             <div class="row">
                 <div class="col-12 signup" align="center" style="text-align:center">
-                    Don't have accout? <a href="register.php">Sign Up!</a>
+                    Don't have an account? <a href="register.php">Sign Up!</a>
                 </div>
             </div>
         </div>
-        <script>
 
-            function load_data() {
-                $.ajax({
-                    url: "/DB/services/user/get_all_user.php",
-                    method: "GET",
-                    success: function(data) {
-                        var co = 1;
-                        $("#user-content").html('');
-                        data.forEach(function(mhs){
-                            var row = $("<tr></tr>");
-                            var col1 = $("<td>" + co + "</td>");
-                            var col2 = $("<td>" + mhs['nrp'] + "</td>");
-                            var col3 = $("<td>" + mhs['name'] + "</td>");
-                            col1.appendTo(row);
-                            col2.appendTo(row);
-                            col3.appendTo(row);
-                            
-                            // Tools
-                            var tools = $("<td></td>");
-                            var edit_btn = $('<button id="edit-user-btn" class="btn btn-warning"><i class="lnr lnr-pencil"></i></button>');
-                            var delete_btn = $('<button id="delete-user-btn" class="btn btn-danger"><i class="lnr lnr-trash"></i></button>');
-                            
-                            edit_btn.data('id', mhs['id']);
-                            edit_btn.data('nrp', mhs['nrp']);
-                            edit_btn.data('name', mhs['name']);
-                            delete_btn.data('id', mhs['id']);
-
-                            edit_btn.appendTo(tools);
-                            tools.append(" ");
-                            delete_btn.appendTo(tools);
-                            tools.appendTo(row);
-
-                            co++;
-                            $("#user-content").append(row);
-                        });
-                    },
-                    error: function(data) {
-
-                    }
-                });
-            }
-
-            $(document).ready(function(){
-                load_data();
-            });
-
-            $("#add-user-btn").click(function(){
-                $("#add-user-modal").modal();
-            });
-            $("#submit-user-button").click(function(){
-                var nrp = $("#nrp").val();
-                var name = $("#name").val();
-
-            });
-
-            $("#user-content").on("click", "[id='edit-user-btn']", function(){
-                var id = $(this).data('id');
-                var name = $(this).data('name');
-                var nrp = $(this).data('nrp');
-                
-                $("#edit-id").val(id);
-                $("#edit-name").val(name);
-                $("#edit-nrp").val(nrp);
-                $("#edit-user-modal").modal();
-            });
-
-            $("#edit-modal-button").click(function(){
-                var id = $("#edit-id").val();
-                var nrp = $("#edit-nrp").val();
-                var name = $("#edit-name").val();
-                
-            });
-
-            $("#user-content").on("click", "[id='delete-user-btn']", function(){
-                var id = $(this).data('id');
-                $.confirm({
-                    title: 'Confirm!',
-                    content: 'You cannot recover deleted data!',
-                    buttons: {
-                        confirm: {
-                            text: 'Confirm',
-                            btnClass: 'btn-success',
-                            keys: ['enter'],
-                            action: function(){
-                                alert(id);
-                                
-                            }
-                        },
-                        cancel: {
-                            text: 'Cancel',
-                            btnClass: 'btn-secondary',
-                            keys: ['shift'],
-                            action: function(){
-                                // alert("Cancel");
-                            }
-                        }
-                    }
-                });
-            });
-        </script>
         <style>
-	        body{
-	        	background:black;
-	        }
+            body{
+                background:black;
+            }
             .nama,.signup,form{
                 color:white;
             }
@@ -170,9 +70,9 @@ if(isset($_GET['status'])){
                 background:transparent;
             }
             .logobrandfull{
-		        height:300px;
-		        width:auto;
-	        }
+                height:300px;
+                width:auto;
+            }
         </style>
     </body>
 </html>
