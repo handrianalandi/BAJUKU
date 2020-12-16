@@ -87,26 +87,24 @@ if (isset($_GET['status'])) {
 
 		<div class="modal fade" id="select-item-modal" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
-				<form action="services/buyitem.php" method="POST" id="formbuyitem">
-					<div class="modal-content">
-						<div class="modal-header">
-							<div class="form-group">
-								<h5 class="form-control modal-title text-center" id="nama"></h5>
-							</div>
-						</div>
-						<div class="modal-body">
-							<img src="" alt="">
-							<h5></h5>
-							<div>
-								<p class="form-group"></p>
-							</div>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-							<button type="button" id="submit-buy-button" type="submit" class="btn btn-success"><span class="lnr lnr-cart"></span> Buy</button>
+				<div class="modal-content">
+					<div class="modal-header">
+						<div class="form-group">
+							<h5 class="form-control modal-title text-center" id="nama" name="nama"></h5>
 						</div>
 					</div>
-				</form>
+					<div class="modal-body">
+						<img src="" alt="">
+						<h5></h5>
+						<div>
+							<p class="form-group"></p>
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+						<button type="button" id="submit-buy-button" class="btn btn-success"><span class="lnr lnr-cart"></span> Buy</button>
+					</div>
+				</div>
 			</div>
 		</div>
 
@@ -310,6 +308,29 @@ if (isset($_GET['status'])) {
 		}
 	</style>
 	<script>
+		$("#submit-buy-button").click(function() {
+			var nama = $(".modal-title").html();
+			var size = $("#size").val();
+			$.ajax({
+				url: 'services/buyitem.php',
+				method: 'POST',
+				data: {
+					nama: nama,
+					size: size
+				},
+				success: function(data) {
+					if (data == 'true') {
+						window.location.href = "home.php?status=20";
+					} else {
+						alert(data);
+					}
+				},
+				error: function($xhr, textStatus, errorThrown) {
+					alert($xhr.responseJSON['error']);
+				}
+			});
+		});
+
 		function load_data() {
 			$.ajax({
 				url: "services/get_all_item.php",
@@ -376,7 +397,7 @@ if (isset($_GET['status'])) {
 					Harga: ` + hargabaju + `<br>
 					Available Size:
 					<center>
-						<select class="form-control" id="size" style="height:40px; font-size: 12pt; width: 60%;">
+						<select class="form-control" id="size" name="size" style="height:40px; font-size: 12pt; width: 60%;">
 						<option value="">Pilih size</option>
 				`;
 				if (size_s > 0) {
