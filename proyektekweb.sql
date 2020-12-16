@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2020 at 04:11 PM
+-- Generation Time: Dec 16, 2020 at 04:14 PM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -58,7 +58,7 @@ CREATE TABLE `transaksi` (
   `size` varchar(2) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `kuantitas` int(11) DEFAULT NULL,
-  `no_order` int(11) DEFAULT NULL
+  `no_order` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
