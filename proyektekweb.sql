@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 16, 2020 at 04:14 PM
+-- Generation Time: Dec 18, 2020 at 10:42 AM
 -- Server version: 10.1.16-MariaDB
 -- PHP Version: 7.0.9
 
@@ -41,10 +41,11 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`id_item`, `nama_item`, `item_image_directory`, `size_s`, `size_m`, `size_l`, `harga`) VALUES
-(1, 'Street Tee 1', 'assets/images/street1.jpg', 2, 3, 1, '210.000'),
-(2, 'Street Tee 2', 'assets/images/street2.jpg', 1, 5, 2, '250.000'),
+(1, 'Street Tee 1', 'assets/images/street1.jpg', 1, 1, 0, '210.000'),
+(2, 'Street Tee 2', 'assets/images/street2.jpg', 1, 1, 2, '250.000'),
 (3, 'Street Tee 3', 'assets/images/street3.jpg', 0, 0, 0, '125.000'),
-(4, 'Street Tee 4', 'assets/images/street4.jpg', 3, 3, 2, '175.000');
+(4, 'Street Tee 4', 'assets/images/street4.jpg', 0, 0, 1, '175.000'),
+(6, 'testing', 'assets/images/BackgroundPlasticBlack.png', 0, 0, 0, '123');
 
 -- --------------------------------------------------------
 
@@ -58,8 +59,20 @@ CREATE TABLE `transaksi` (
   `size` varchar(2) NOT NULL,
   `email` varchar(50) DEFAULT NULL,
   `kuantitas` int(11) DEFAULT NULL,
-  `no_order` varchar(255) DEFAULT NULL
+  `no_order` varchar(255) DEFAULT NULL,
+  `id_baju` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `transaksi`
+--
+
+INSERT INTO `transaksi` (`id`, `tanggal`, `size`, `email`, `kuantitas`, `no_order`, `id_baju`) VALUES
+(1, '2020-12-18', 'M', 'dummy@dummy.com', 1, '4245994487699', 1),
+(2, '2020-12-18', 'M', 'dummy@dummy.com', 1, '91834110464', 1),
+(3, '2020-12-18', 'M', 'dummy@dummy.com', 1, '42401117702', 2),
+(4, '2020-12-18', 'L', 'dummy@dummy.com', 1, '8294021033069', 1),
+(5, '2020-12-18', 'M', 'dummysecond@dummy.second', 1, '575828730808', 2);
 
 -- --------------------------------------------------------
 
@@ -81,7 +94,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `email`, `nama`, `alamat`, `password`) VALUES
 (1, 'dummy@dummy.com', 'dummy', 'dummyalamat2', 'dummy'),
-(2, 'dummysecond@dummy.second', 'dummysecond', 'dummysecondalamat2', 'dummysecond');
+(2, 'dummysecond@dummy.second', 'dummysecond', 'dummysecondalamat2', 'dummysecond'),
+(3, 'admin@bajuku.com', 'admin', 'admin', 'admin');
 
 --
 -- Indexes for dumped tables
@@ -113,17 +127,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `item`
 --
 ALTER TABLE `item`
-  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_item` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

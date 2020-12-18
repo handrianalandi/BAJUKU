@@ -13,28 +13,28 @@ function RandomInt()
     return $randstring;
 }
 
-if(isset($_POST['nama']) && isset($_POST['size'])) {
+if(isset($_POST['id']) && ($_POST['size']=="S"||$_POST['size']=="M"||$_POST['size']=="L")) {
     $timestamp = date("Y-m-d H:i:s");
     $no_order = RandomInt();
 
-    $sql= "INSERT INTO transaksi (id, tanggal, size, email, kuantitas, no_order) VALUES (?, ?, ?, ? ,? ,?)";
+    $sql= "INSERT INTO transaksi (id, tanggal, size, email, kuantitas, no_order,id_baju) VALUES (?, ?, ?, ? ,? ,?,?)";
     $stmt = $pdo->prepare($sql);
-    $stmt->execute(['', $timestamp, $_POST['size'], $_SESSION['email'], 1, $no_order]);
+    $stmt->execute(['', $timestamp, $_POST['size'], $_SESSION['email'], 1, $no_order,$_POST['id']]);
 
     if ($_POST['size'] == 'S') {
-        $updatestocksql = "UPDATE item SET size_s = size_s - 1 WHERE nama_item = ?";
+        $updatestocksql = "UPDATE item SET size_s = size_s - 1 WHERE id_item = ?";
     }
     if ($_POST['size'] == 'M') {
-        $updatestocksql = "UPDATE item SET size_m = size_m - 1 WHERE nama_item = ?";
+        $updatestocksql = "UPDATE item SET size_m = size_m - 1 WHERE id_item = ?";
     }
     if ($_POST['size'] == 'L') {
-        $updatestocksql = "UPDATE item SET size_l = size_l - 1 WHERE nama_item = ?";
+        $updatestocksql = "UPDATE item SET size_l = size_l - 1 WHERE id_item = ?";
     }
     $updatestockstmt = $pdo->prepare($updatestocksql);
-    $updatestockstmt->execute([$_POST['nama']]);
+    $updatestockstmt->execute([$_POST['id']]);
 
-    echo "true";
+    echo $no_order;
 }
 else{
-	echo "false";
+	echo 0;
 }
