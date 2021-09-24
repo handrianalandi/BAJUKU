@@ -61,13 +61,17 @@ if(isset($_GET['status'])){
 
         <style>
             body{
-                background:black;
+                background-image:url("assets/images/background.jpg");
             }
             .nama,.signup,form{
                 color:white;
-            }
+            }             
             .form-control{
+                color:white;
                 background:transparent;
+            }
+            .form-control::-webkit-input-placeholder {
+                color: white;
             }
             .logobrandfull{
                 height:300px;

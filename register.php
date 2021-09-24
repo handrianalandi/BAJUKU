@@ -42,7 +42,7 @@ if(isset($_GET['status'])){
 						<input type="password" class="form-control" id="password" name="password"
 							placeholder="Enter Password" required>
 					</div>
-					<button type="submit" class="btn btn-primary">Sign Up</button>
+					<button type="submit" class="btn btn-outline-light">Sign Up</button>
 				</form>
 			</div>
 		</div>
@@ -66,19 +66,22 @@ if(isset($_GET['status'])){
 		integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous">
 	</script> -->
 <style>
-	        body{
-	        	background:black;
-	        }
+			body{
+				background-image:url("assets/images/background.jpg");
+			}
             .nama,.signup,form{
                 color:white;
             }
             .form-control{
                 background:transparent;
             }
+			.form-control::-webkit-input-placeholder {
+				color: white;
+			}
 			.logobrandfull{
-		        height:300px;
-		        width:auto;
-	        }
+				height:300px;
+				width:auto;
+			}
         </style>
 </body>
 
