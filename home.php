@@ -93,10 +93,10 @@ if (isset($_GET['status'])) {
 
 		<div class="modal fade" id="select-item-modal" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content bg-dark text-white">
+				<div class="modal-content">
 					<div class="modal-header">
 						<div class="form-group">
-							<h5 class="modal-title text-center" id="nama" name="nama"></h5>
+							<h5 class="form-control modal-title text-center" id="nama" name="nama"></h5>
 						</div>
 					</div>
 					<div class="modal-body buying">
@@ -117,7 +117,7 @@ if (isset($_GET['status'])) {
 
 		<div class="modal fade" id="edit-item-modal" tabindex="-1" role="dialog" aria-hidden="true">
 			<div class="modal-dialog modal-lg" role="document">
-				<div class="modal-content bg-dark text-white">
+				<div class="modal-content">
 					<div class="modal-header">
 						<h5 class="modal-title text-center" id="admin"></h5>
 					</div>
@@ -167,17 +167,19 @@ if (isset($_GET['status'])) {
 	<footer class="page-footer font-small teal pt-4">
 		<div class="container text-center text-md-left">
 			<div class="row">
-				<!--<div class="col-12 col-md-6 mt-md-0 mt-3">
+				<div class="col-12 col-md-6 mt-md-0 mt-3">
 					<h5 class="text-uppercase font-weight-bold"><img src="assets/images/logo.png" alt="" class="logobrand">BAJUKU</h5>
 					<p>BAJUKU is the best</p>
-				</div>-->
+				</div>
 				<hr class="clearfix w-100 d-md-none pb-3">
-				<div class="col-12 col-md-6 mb-md-0 mb-3 offset-3 text-center">
+				<div class="col-12 col-md-6 mb-md-0 mb-3 text-right">
 					<h5 class="text-uppercase font-weight-bold">CONNECT WITH US!</h5>
 					<i class="fa fa-instagram" aria-hidden="true"></i>&nbsp;: @bajukuinibro<br>
 					<i class="fa fa-facebook" aria-hidden="true"></i>&nbsp;&nbsp;: bajukuinibro<br>
 					<i class="fa fa-whatsapp" aria-hidden="true"></i>&nbsp;: +628123123123<br>
 					<i class="fa fa-home" aria-hidden="true"></i>&nbsp;: Jalan Pondok Indah<br>
+					<i class="fa fa-hand-peace-o" aria-hidden="true"></i><br>
+
 				</div>
 			</div>
 		</div>
